@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>İyi ki Doğdun 🤍</title>
+  <title>Sana küçük bir sürpriz 🤍</title>
   <style>
     body {
       margin: 0;
@@ -10,18 +10,67 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #f6f6f6;
+      background: #f2f2f2;
       font-family: Arial, sans-serif;
-      text-align: center;
     }
-    h1 { font-size: 48px; }
-    p { font-size: 20px; color: #555; }
+    .box {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 320px;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 22px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #000;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .error {
+      color: #c00;
+      font-size: 14px;
+      margin-top: 10px;
+      display: none;
+    }
   </style>
 </head>
+
 <body>
-  <div>
-    <h1>İyi ki doğdun 🤍</h1>
-    <p>Bu site sana küçük bir sürpriz.</p>
+  <div class="box">
+    <h1>Girmek için şifreyi yaz 🤍</h1>
+    <input type="password" id="pass" placeholder="Şifre">
+    <button onclick="check()">Devam et</button>
+    <div class="error" id="error">Şifre yanlış.</div>
   </div>
+
+  <script>
+    function check() {
+      const dogru = "1234";
+      const girilen = document.getElementById("pass").value;
+
+      if (girilen === dogru) {
+        window.location.href = "surpriz.html";
+      } else {
+        document.getElementById("error").style.display = "block";
+      }
+    }
+  </script>
 </body>
 </html>
