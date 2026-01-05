@@ -1,100 +1,178 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Sana küçük bir sürpriz 🤍</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<title>İyi ki Doğdun 🤍</title>
 
-    .box {
-      background: white;
-      padding: 40px;
-      border-radius: 14px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      width: 340px;
-    }
+<style>
+* { box-sizing: border-box; }
 
-    input, button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 15px;
-      font-size: 16px;
-      border-radius: 8px;
-    }
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: #fafafa;
+  color: #222;
+}
 
-    input {
-      border: 1px solid #ccc;
-    }
+/* GENEL */
+section {
+  min-height: 100vh;
+  padding: 80px 20px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
-    button {
-      border: none;
-      background: #000;
-      color: white;
-      cursor: pointer;
-    }
+.active { display: flex; }
 
-    .error {
-      color: #c00;
-      margin-top: 10px;
-      display: none;
-    }
+h1 { font-size: 48px; margin-bottom: 20px; }
+h2 { font-size: 36px; margin-bottom: 20px; }
+p  { font-size: 20px; max-width: 700px; line-height: 1.6; }
 
-    .hidden {
-      display: none;
-    }
+button {
+  padding: 14px 30px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  background: black;
+  color: white;
+  cursor: pointer;
+}
 
-    h1 {
-      margin-bottom: 10px;
-    }
+/* LOGIN */
+#login .box {
+  background: white;
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  width: 340px;
+}
 
-    p {
-      font-size: 18px;
-      color: #444;
-    }
-  </style>
+/* HERO */
+#hero {
+  background: linear-gradient(135deg, #f7d1d1, #ffffff);
+}
+
+/* GALERİ */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 14px;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.nav button {
+  padding: 10px 16px;
+  font-size: 14px;
+  border-radius: 20px;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- GİRİŞ -->
-  <div class="box" id="login">
-    <h1>Girmek için şifreyi yaz 🤍</h1>
-    <input type="password" id="pass" placeholder="Şifre">
-    <button onclick="kontrol()">Devam et</button>
-    <div class="error" id="error">Şifre yanlış.</div>
+<!-- LOGIN -->
+<section id="login" class="active">
+  <div class="box">
+    <h2>Girmek için şifreyi yaz 🤍</h2>
+    <input type="password" id="pass" placeholder="Şifre" style="width:100%;padding:12px;margin:15px 0">
+    <button onclick="giris()">Devam et</button>
+    <p id="err" style="color:red;display:none;">Şifre yanlış.</p>
   </div>
+</section>
 
-  <!-- SÜRPRİZ -->
-  <div class="box hidden" id="surpriz">
+<!-- HERO -->
+<section id="hero">
+  <div>
     <h1>İyi ki doğdun 🤍</h1>
+    <p>Bu site, sana olan sevgimin küçük bir yansıması.</p>
+    <button onclick="go('story')">Devam et</button>
+  </div>
+</section>
+
+<!-- HİKÂYE -->
+<section id="story">
+  <div>
+    <h2>Bizim Hikâyemiz</h2>
     <p>
-      Hayatıma kattığın her şey için teşekkür ederim.<br><br>
-      Bu site sadece sana ait.
+      Tanıştığımız günden beri hayatımda çok şey değişti.
+      Gülüşün, sabrın ve varlığın her günümü daha anlamlı kılıyor.
     </p>
   </div>
+</section>
 
-  <script>
-    function kontrol() {
-      const dogru = "1234"; // ← ŞİFREYİ BURADAN DEĞİŞTİR
-      const girilen = document.getElementById("pass").value;
+<!-- GALERİ -->
+<section id="photos">
+  <div>
+    <h2>Anılarımız</h2>
+    <div class="gallery">
+      <img src="foto1.jpg">
+      <img src="foto2.jpg">
+      <img src="foto3.jpg">
+    </div>
+  </div>
+</section>
 
-      if (girilen === dogru) {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("surpriz").style.display = "block";
-      } else {
-        document.getElementById("error").style.display = "block";
-      }
-    }
-  </script>
+<!-- NOT -->
+<section id="note">
+  <div>
+    <h2>Sana Notum</h2>
+    <p>
+      Her zaman yanında olacağım.  
+      İyi ki varsın, iyi ki benimlesin.
+    </p>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section id="final">
+  <div>
+    <h1>Seni çok seviyorum 🤍</h1>
+  </div>
+</section>
+
+<!-- NAV -->
+<div class="nav">
+  <button onclick="go('hero')">1</button>
+  <button onclick="go('story')">2</button>
+  <button onclick="go('photos')">3</button>
+  <button onclick="go('note')">4</button>
+  <button onclick="go('final')">5</button>
+</div>
+
+<script>
+const sifre = "1234";
+
+function giris() {
+  if (document.getElementById("pass").value === sifre) {
+    go("hero");
+  } else {
+    document.getElementById("err").style.display = "block";
+  }
+}
+
+function go(id) {
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+</script>
 
 </body>
 </html>
