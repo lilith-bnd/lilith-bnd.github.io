@@ -10,67 +10,91 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #f2f2f2;
       font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      text-align: center;
     }
+
     .box {
       background: white;
       padding: 40px;
-      border-radius: 12px;
-      text-align: center;
+      border-radius: 14px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      width: 320px;
+      width: 340px;
     }
-    h1 {
-      margin-bottom: 20px;
-      font-size: 22px;
-    }
-    input {
+
+    input, button {
       width: 100%;
       padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
+      margin-top: 15px;
       font-size: 16px;
-    }
-    button {
-      width: 100%;
-      padding: 12px;
-      border: none;
       border-radius: 8px;
+    }
+
+    input {
+      border: 1px solid #ccc;
+    }
+
+    button {
+      border: none;
       background: #000;
       color: white;
-      font-size: 16px;
       cursor: pointer;
     }
+
     .error {
       color: #c00;
-      font-size: 14px;
       margin-top: 10px;
       display: none;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #444;
     }
   </style>
 </head>
 
 <body>
-  <div class="box">
+
+  <!-- GİRİŞ -->
+  <div class="box" id="login">
     <h1>Girmek için şifreyi yaz 🤍</h1>
     <input type="password" id="pass" placeholder="Şifre">
-    <button onclick="check()">Devam et</button>
+    <button onclick="kontrol()">Devam et</button>
     <div class="error" id="error">Şifre yanlış.</div>
   </div>
 
+  <!-- SÜRPRİZ -->
+  <div class="box hidden" id="surpriz">
+    <h1>İyi ki doğdun 🤍</h1>
+    <p>
+      Hayatıma kattığın her şey için teşekkür ederim.<br><br>
+      Bu site sadece sana ait.
+    </p>
+  </div>
+
   <script>
-    function check() {
-      const dogru = "1234";
+    function kontrol() {
+      const dogru = "1234"; // ← ŞİFREYİ BURADAN DEĞİŞTİR
       const girilen = document.getElementById("pass").value;
 
       if (girilen === dogru) {
-        window.location.href = "surpriz.html";
+        document.getElementById("login").style.display = "none";
+        document.getElementById("surpriz").style.display = "block";
       } else {
         document.getElementById("error").style.display = "block";
       }
     }
   </script>
+
 </body>
 </html>
